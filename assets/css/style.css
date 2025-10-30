@@ -1,0 +1,161 @@
+/* 다크 테마, 반응형, 모던 스타일 */
+:root {
+    --bg: #181a1b;
+    --card: #232527;
+    --accent: #00bcd4;
+    --text: #e0e0e0;
+    --hover: #2c2f33;
+    --border: #333;
+}
+body {
+    margin: 0;
+    font-family: 'Segoe UI', Arial, sans-serif;
+    background: var(--bg);
+    color: var(--text);
+}
+header {
+    padding: 2rem 1rem 1rem 1rem;
+    text-align: center;
+}
+h1 {
+    margin: 0 0 1rem 0;
+    font-size: 2rem;
+    letter-spacing: 2px;
+}
+.filter-nav {
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+}
+.filter-nav button {
+    background: var(--card);
+    color: var(--text);
+    border: none;
+    padding: 0.5rem 1.5rem;
+    border-radius: 20px;
+    cursor: pointer;
+    font-size: 1rem;
+    transition: background 0.2s;
+}
+.filter-nav button.active,
+.filter-nav button:hover {
+    background: var(--accent);
+    color: #fff;
+}
+.gallery-grid {
+    display: grid;
+    gap: 1.5rem;
+    padding: 2rem;
+    grid-template-columns: repeat(4, 1fr);
+}
+@media (max-width: 1024px) {
+    .gallery-grid {
+        grid-template-columns: repeat(3, 1fr);
+    }
+}
+@media (max-width: 600px) {
+    .gallery-grid {
+        grid-template-columns: repeat(2, 1fr);
+        padding: 1rem;
+        gap: 1rem;
+    }
+}
+.media-card {
+    background: var(--card);
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 2px 8px #0002;
+    cursor: pointer;
+    position: relative;
+    transition: transform 0.2s, box-shadow 0.2s;
+    border: 1px solid var(--border);
+}
+.media-card:hover {
+    transform: translateY(-4px) scale(1.03);
+    box-shadow: 0 6px 16px #0004;
+    background: var(--hover);
+}
+.media-card img,
+.media-card video {
+    width: 100%;
+    display: block;
+    aspect-ratio: 1/1;
+    object-fit: cover;
+}
+.media-card .play-icon {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 3rem;
+    color: var(--accent);
+    pointer-events: none;
+    opacity: 0.85;
+}
+/* 모달 스타일 */
+.modal {
+    position: fixed;
+    top: 0; left: 0; right: 0; bottom: 0;
+    background: #181a1bcc;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 1000;
+    transition: opacity 0.2s;
+}
+.modal.hidden {
+    opacity: 0;
+    pointer-events: none;
+}
+.modal-content {
+    max-width: 90vw;
+    max-height: 80vh;
+    background: var(--card);
+    border-radius: 16px;
+    padding: 1rem;
+    box-shadow: 0 4px 32px #0006;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+}
+.modal-content img,
+.modal-content video {
+    max-width: 80vw;
+    max-height: 70vh;
+    border-radius: 10px;
+    background: #000;
+}
+.close {
+    position: absolute;
+    top: 1.5rem;
+    right: 2rem;
+    font-size: 2.5rem;
+    color: var(--accent);
+    cursor: pointer;
+    z-index: 10;
+    background: none;
+    border: none;
+}
+.arrow {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background: var(--card);
+    color: var(--accent);
+    border: none;
+    font-size: 2.5rem;
+    border-radius: 50%;
+    width: 48px;
+    height: 48px;
+    cursor: pointer;
+    opacity: 0.85;
+    z-index: 10;
+    transition: background 0.2s;
+}
+.arrow.left { left: 2rem; }
+.arrow.right { right: 2rem; }
+.arrow:hover {
+    background: var(--accent);
+    color: #fff;
+}
